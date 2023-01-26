@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-deploy
-  labels:
-    app: python
+  name: app-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: python
+      name: python-app
   template:
     metadata:
       labels:
-        app: python
+        name: python-app
     spec:
       containers:
-      - name: python
+      - name: python-app
         image: gcr.io/david-emad-project/python_project
         ports:
-        - containerPort: 8080
+        - containerPort: 8000
+
+
         env:
           - name: ENVIRONMENT
             value: "DEV"
@@ -27,7 +27,7 @@ spec:
           - name: PORT
             value: "8000"
           - name: REDIS_HOST
-            value: "localhost"
+            value: "redis-connect"
           - name: REDIS_PORT
             value: "6379"
           - name: REDIS_DB

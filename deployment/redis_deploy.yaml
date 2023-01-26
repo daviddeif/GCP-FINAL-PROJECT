@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: redis-base-deployment
+  name: redis
   labels:
-    app: redis-base
+    name: redis
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: redis-base
+      name: redis
   template:
     metadata:
       labels:
-        app: redis-base
+        name: redis
     spec:
       containers:
-      - name: redis-base
+      - name: redis
         image: gcr.io/david-emad-project/redis
         ports:
         - containerPort: 6379

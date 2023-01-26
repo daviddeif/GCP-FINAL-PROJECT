@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: redis-with-py
+  name: redis-connect
 spec:
   type: ClusterIP
   selector:
-    app: redis-base
+    name: redis
   ports:
   - port: 6379
     targetPort: 6379
